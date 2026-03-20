@@ -94,8 +94,9 @@ header {
   z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 10px 24px;
+  position: relative;
 }
 .logo {
   font-size: 22px;
@@ -114,7 +115,7 @@ header {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--blue); }
-.header-icons { display: flex; gap: 14px; align-items: center; }
+.header-icons { display: flex; gap: 14px; align-items: center; position: absolute; right: 24px; }
 .header-icons svg { width: 22px; height: 22px; cursor: pointer; }
 
 /* PRODUCT SECTION */
@@ -468,6 +469,58 @@ header {
 }
 .text-section p { font-size: 15px; color: var(--text); line-height: 1.7; margin-bottom: 12px; }
 .text-section strong { font-weight: 800; }
+
+/* VIDEO CAROUSEL */
+.video-carousel-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.carousel-container {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.carousel-container::-webkit-scrollbar { height: 6px; }
+.carousel-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+.carousel-container::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 10px; }
+.carousel-item {
+  flex-shrink: 0;
+  width: 240px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  position: relative;
+  scroll-snap-align: start;
+  aspect-ratio: 9/16;
+}
+.carousel-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.play-button:hover { background: #fff; }
+.play-button svg { width: 24px; height: 24px; color: var(--blue); }
 
 /* FEATURE WITH IMAGE */
 .feature-section {
@@ -862,41 +915,44 @@ footer {
   </div>
 </div>
 
-<!-- VIDEO SECTION -->
-<div class="video-section">
-  <h2 class="section-title">Métodos Tradicionales VS Vaporyx™</h2>
-  <div class="video-grid">
-    <div class="video-card" style="background:linear-gradient(135deg,#1a3a5c,#2a7bc0);">
-      <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:20px;text-align:center;">
-        <div style="font-size:40px;margin-bottom:10px;">🔥</div>
-        <div style="font-size:13px;font-weight:800;margin-bottom:6px;">Vaporyx™</div>
-        <div style="font-size:20px;font-weight:900;color:#fff;margin:6px 0;">VS</div>
-        <div style="font-size:12px;opacity:.75;">Spray y Balleta</div>
-      </div>
+<!-- VIDEO CAROUSEL -->
+<div class="video-carousel-section">
+  <h2 class="section-title">Métodos Tradicionales VS Vaporyx</h2>
+  <div class="carousel-container">
+    <div class="carousel-item">
+      <video playsinline="" loop="" autoplay="" muted="" preload="auto">
+        <source src="//limpiadoraprofesional.com/cdn/shop/videos/c/vp/de9600b497974c04ab3d228aba7b36ad/de9600b497974c04ab3d228aba7b36ad.HD-1080p-4.8Mbps-63190529.mp4?v=0" type="video/mp4">
+      </video>
+      <button class="play-button" onclick="toggleVideo(this)" style="opacity: 0;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 10 14"><path fill-rule="evenodd" d="M1.482.815A1 1 0 0 0 0 1.69v10.517a1 1 0 0 0 1.525.851L10.54 7.5a1 1 0 0 0-.043-1.728z" clip-rule="evenodd"></path></svg>
+      </button>
     </div>
-    <div class="video-card" style="background:linear-gradient(135deg,#1a5c3a,#20a060);">
-      <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:20px;text-align:center;">
-        <div style="font-size:40px;margin-bottom:10px;">💧</div>
-        <div style="font-size:13px;font-weight:800;margin-bottom:6px;">Vaporyx™</div>
-        <div style="font-size:20px;font-weight:900;margin:6px 0;">VS</div>
-        <div style="font-size:12px;opacity:.75;">Fregona</div>
-      </div>
+
+    <div class="carousel-item">
+      <video playsinline="" loop="" autoplay="" muted="" preload="auto">
+        <source src="//limpiadoraprofesional.com/cdn/shop/videos/c/vp/bcde8bbf1e6541d99db2872037b915fc/bcde8bbf1e6541d99db2872037b915fc.HD-1080p-4.8Mbps-63190523.mp4?v=0" type="video/mp4">
+      </video>
+      <button class="play-button" onclick="toggleVideo(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 10 14"><path fill-rule="evenodd" d="M1.482.815A1 1 0 0 0 0 1.69v10.517a1 1 0 0 0 1.525.851L10.54 7.5a1 1 0 0 0-.043-1.728z" clip-rule="evenodd"></path></svg>
+      </button>
     </div>
-    <div class="video-card" style="background:linear-gradient(135deg,#5c1a3a,#c02070);">
-      <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:20px;text-align:center;">
-        <div style="font-size:40px;margin-bottom:10px;">🧹</div>
-        <div style="font-size:13px;font-weight:800;margin-bottom:6px;">Vaporyx™</div>
-        <div style="font-size:20px;font-weight:900;margin:6px 0;">VS</div>
-        <div style="font-size:12px;opacity:.75;">Bayeta</div>
-      </div>
+
+    <div class="carousel-item">
+      <video playsinline="" loop="" autoplay="" muted="" preload="auto">
+        <source src="//limpiadoraprofesional.com/cdn/shop/videos/c/vp/8dbd204a3c094b91a229d56352361f75/8dbd204a3c094b91a229d56352361f75.HD-1080p-4.8Mbps-63190530.mp4?v=0" type="video/mp4">
+      </video>
+      <button class="play-button" onclick="toggleVideo(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 10 14"><path fill-rule="evenodd" d="M1.482.815A1 1 0 0 0 0 1.69v10.517a1 1 0 0 0 1.525.851L10.54 7.5a1 1 0 0 0-.043-1.728z" clip-rule="evenodd"></path></svg>
+      </button>
     </div>
-    <div class="video-card" style="background:linear-gradient(135deg,#3a1a5c,#7020c0);">
-      <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:20px;text-align:center;">
-        <div style="font-size:40px;margin-bottom:10px;">✨</div>
-        <div style="font-size:13px;font-weight:800;margin-bottom:6px;">Vaporyx™</div>
-        <div style="font-size:20px;font-weight:900;margin:6px 0;">VS</div>
-        <div style="font-size:12px;opacity:.75;">Escoba</div>
-      </div>
+
+    <div class="carousel-item">
+      <video playsinline="" loop="" autoplay="" muted="" preload="auto">
+        <source src="//limpiadoraprofesional.com/cdn/shop/videos/c/vp/1cce39799afb43ec99d6a3a161c3e82c/1cce39799afb43ec99d6a3a161c3e82c.HD-1080p-4.8Mbps-63190528.mp4?v=0" type="video/mp4">
+      </video>
+      <button class="play-button" onclick="toggleVideo(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 10 14"><path fill-rule="evenodd" d="M1.482.815A1 1 0 0 0 0 1.69v10.517a1 1 0 0 0 1.525.851L10.54 7.5a1 1 0 0 0-.043-1.728z" clip-rule="evenodd"></path></svg>
+      </button>
     </div>
   </div>
 </div>
@@ -1176,6 +1232,18 @@ const meterObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.3 });
 const statsSection = document.querySelector('.stats-section');
 if (statsSection) meterObserver.observe(statsSection);
+
+// VIDEO CAROUSEL
+function toggleVideo(btn) {
+  const video = btn.parentElement.querySelector('video');
+  if (video.paused) {
+    video.play();
+    btn.style.opacity = '0';
+  } else {
+    video.pause();
+    btn.style.opacity = '1';
+  }
+}
 </script>
 </body>
 </html>
